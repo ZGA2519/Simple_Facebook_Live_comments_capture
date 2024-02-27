@@ -10,9 +10,6 @@ const connectDB = () => {
       strict: true,
       deprecationErrors: true,
     },
-    useNewUrlParser: true,
-    socketTimeoutMS: 45000,
-    connectTimeoutMS: 30000,
   });
 
   async function run() {
