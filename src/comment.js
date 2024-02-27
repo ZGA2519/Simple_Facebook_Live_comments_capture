@@ -10,11 +10,11 @@ const PORT = process.env.PORT || 3000;
 app.use(bodyParser.json());
 
 // Facebook access token
-const accessToken = process.env.FACEBOOK_ACCESS_TOKEN;
 const videoId = process.env.FACEBOOK_VIDEO_ID;
+const accessToken = process.env.FACEBOOK_ACCESS_TOKEN;
 
 // Route to fetch comments from the live video
-app.get("/comments", async (req, res) => {
+app.get("/", async (req, res) => {
   try {
     const comments = await fetchComments();
     res.json(comments);
@@ -27,15 +27,14 @@ app.get("/comments", async (req, res) => {
 // Function to fetch comments from Facebook Live video
 const fetchComments = async () => {
   try {
-    const response = await axios.get(
+    return await axios.get(
       `https://graph.facebook.com/${videoId}/comments?access_token=${accessToken}`
-    );
-    return response.data.data;
+    ).then((response) => {
+      return response.data.data;
+    });
   } catch (error) {
     throw error;
   }
 };
 
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-});
+module.exports = app;
