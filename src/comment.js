@@ -1,6 +1,7 @@
 const express = require("express");
 const axios = require("axios");
 const bodyParser = require("body-parser");
+require("dotenv").config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -9,8 +10,8 @@ const PORT = process.env.PORT || 3000;
 app.use(bodyParser.json());
 
 // Facebook access token
-const accessToken = "YOUR_FACEBOOK_ACCESS_TOKEN";
-const videoId = "YOUR_FACEBOOK_LIVE_VIDEO_ID";
+const accessToken = process.env.FACEBOOK_ACCESS_TOKEN;
+const videoId = process.env.FACEBOOK_VIDEO_ID;
 
 // Route to fetch comments from the live video
 app.get("/comments", async (req, res) => {

@@ -1,4 +1,8 @@
 const mongoose = require('mongoose');
+require('dotenv').config();
+
+mongoose.connect(process.env.MONGODB_URI)
+mongoose.set('bufferTimeoutMS', 30000); // Example: Increase timeout to 30 seconds
 
 const productSchema = new mongoose.Schema({
     name: {
