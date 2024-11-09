@@ -4,7 +4,7 @@ this is a simple live comment capture that captures comments from Facebook live
 
 
 # Usage
-- `npm` require
+- `npm` required
 - you need an account in `https://developers.facebook.com/` for access token
 - you need to specify some value in `.env` file
 ```
